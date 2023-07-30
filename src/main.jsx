@@ -1,36 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Recientes } from './pages/Recientes.jsx'
-import { Ciudad } from './pages/Ciudad.jsx'
-import './index.css'
-import { Principal } from './pages/Principal.jsx'
+import { RouterProvider } from 'react-router-dom'
 import { ContextProvider } from './context/context.jsx'
-import { UserConnect } from './pages/UserConnect.jsx'
-
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Principal />,
-	},
-	{
-		path: '/recientes',
-		element: <Recientes />,
-	},
-	{
-		path: '/ciudad',
-		element: <Ciudad />,
-	},
-	{
-		path: '/connect',
-		element: <UserConnect />,
-	},
-])
+import { routes } from './router/routes.jsx'
+import './globalStyles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<ContextProvider>
 		<React.StrictMode>
-			<RouterProvider router={router} />
+			<RouterProvider router={routes} />
 		</React.StrictMode>
 	</ContextProvider>
 )

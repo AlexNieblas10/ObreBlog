@@ -1,18 +1,16 @@
 import { useContext, useEffect } from 'react'
-import { MainContext } from '../context/context'
 import { useNavigate } from 'react-router-dom'
-import { CiudadContent } from './Content/CiudadContent'
+import { MainContext } from '../context/context'
+import { VideojuegosContent } from './Content/VideojuegosContent'
 
-export const Ciudad = () => {
+export const Videojuegos = () => {
 	const { loggedUser } = useContext(MainContext)
 
 	const navigate = useNavigate()
-
 	useEffect(() => {
 		if (!loggedUser) {
 			navigate('/connect')
 		}
 	})
-
-	return <CiudadContent />
+	return <VideojuegosContent />
 }

@@ -1,8 +1,7 @@
 import { useContext, useEffect } from 'react'
-import { NavegationColumnMobile } from '../components/MobileNavegation/NavegationColumnMobile'
-import { NavegationColumn } from '../components/NavegationColumn/NavegationColumn'
 import { MainContext } from '../context/context'
 import { useNavigate } from 'react-router-dom'
+import { PrincipalContent } from './Content/PrincipalContent'
 
 export const Principal = () => {
 	const { loggedUser } = useContext(MainContext)
@@ -15,10 +14,5 @@ export const Principal = () => {
 		}
 	})
 
-	return (
-		<main>
-			<NavegationColumn />
-			<NavegationColumnMobile />
-		</main>
-	)
+	return <PrincipalContent />
 }

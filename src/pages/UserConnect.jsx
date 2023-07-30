@@ -1,15 +1,29 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { OPCIONES } from '../utils/OPCIONES_USUARIO'
-import { UserIniciarSesion } from '../components/UserLogin/UserIniciarSesion'
-import { UserRegistrarse } from '../components/UserLogin/UserRegistrarse'
-import "../css/user_login.css"
+import { UserIniciarSesion } from '../components/connect/UserIniciarSesion'
+import { UserRegistrarse } from '../components/connect/UserRegistrarse'
+import { MainContext } from '../context/context'
 
 export const UserConnect = () => {
 	const [opcion, setOpcion] = useState(OPCIONES.REGISTRARSE)
+	const { loggedUser } = useContext(MainContext)
+
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (loggedUser) {
+			navigate('/')
+		}
+	})
 
 	return (
-		<main className='loginOptionsContainer'>
-			{opcion === OPCIONES.INICIAR_SESION ? <UserIniciarSesion setOpcion={setOpcion} />: <UserRegistrarse setOpcion={setOpcion}/>}
+		<main className="w-full h-screen grid place-items-center text-center">
+			{opcion === OPCIONES.INICIAR_SESION ? (
+				<UserIniciarSesion setOpcion={setOpcion} />
+			) : (
+				<UserRegistrarse setOpcion={setOpcion} />
+			)}
 		</main>
 	)
 }
