@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { LinkTo } from './LinkTo'
 import { MyAccount } from './MyAccount'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 import hamburguerMenu from '../assets/hamburguer_menu.png'
 
 export const NavegationColumnMobile = () => {

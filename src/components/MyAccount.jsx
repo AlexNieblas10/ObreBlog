@@ -1,6 +1,6 @@
 import { LinkTo } from './LinkTo'
 import { useContext } from 'react'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 import accountIcon from '../assets/account_icon.png'
 
 export const MyAccount = () => {

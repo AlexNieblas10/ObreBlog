@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 import { TecnologiaContent } from './Content/TecnologiaContent'
 
 export const Tecnologia = () => {

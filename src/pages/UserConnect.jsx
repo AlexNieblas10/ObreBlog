@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { OPCIONES } from '../utils/OPCIONES_USUARIO'
 import { UserIniciarSesion } from '../components/connect/UserIniciarSesion'
 import { UserRegistrarse } from '../components/connect/UserRegistrarse'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 
 export const UserConnect = () => {
 	const [opcion, setOpcion] = useState(OPCIONES.REGISTRARSE)

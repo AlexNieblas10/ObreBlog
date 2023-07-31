@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 
 export const LinkTo = ({ children, link }) => {
 	const { setActiveNavegation, setActiveAccount } = useContext(MainContext)

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { MainContext } from '../context/context'
+import { MainContext } from '../context/FullContext'
 import { useNavigate } from 'react-router-dom'
 import { DeportesContent } from './Content/DeportesContent'
 

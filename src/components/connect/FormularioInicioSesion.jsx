@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { OPCIONES } from '../../utils/OPCIONES_USUARIO.JS'
-import { MainContext } from '../../context/context'
+import { MainContext } from '../../context/FullContext'
 
 export const FormularioInicioSesion = ({ setOpcion }) => {
 	const { setLoggetUser } = useContext(MainContext)

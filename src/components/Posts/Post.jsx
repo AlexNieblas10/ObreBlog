@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { newDescription } from '../../utils/newDescription'
 import { useContext } from 'react'
-import { MainContext } from '../../context/context'
+import { MainContext } from '../../context/FullContext'
 
 export const Post = ({
 	id,
