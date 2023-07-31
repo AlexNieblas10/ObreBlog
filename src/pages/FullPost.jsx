@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { POSTS } from '../context/FullContext'
+import { POSTS } from '../utils/POSTS'
 import { NavegationColumn } from '../components/NavegationColumn'
 import { NavegationColumnMobile } from '../components/NavegationColumnMobile'
 import { MainContainer } from '../components/MainContainer'
