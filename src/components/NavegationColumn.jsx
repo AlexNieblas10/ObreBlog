@@ -1,4 +1,7 @@
 import { LinkTo } from './LinkTo'
+import githubIcon from '../assets/github_icon.png'
+import logo from '../assets/ObreBlog-logo.png'
+import mail from '../assets/mail_icon.png'
 
 export const NavegationColumn = () => {
 	return (
@@ -6,7 +9,7 @@ export const NavegationColumn = () => {
 			<figure className="h-[20vh] box-border flex justify-center m-0 p-3 max-w-[200px]">
 				<img
 					className="object-contain w-[150px]"
-					src="/src/assets/ObreBlog-logo.png"
+					src={logo}
 					alt="Logo de ObreBlog"
 				/>
 			</figure>
@@ -31,7 +34,7 @@ export const NavegationColumn = () => {
 						>
 							<img
 								className="w-[28%] object-cover"
-								src="/src/assets/github_icon.png"
+								src={githubIcon}
 								alt=""
 							/>
 							GitHub
@@ -42,7 +45,7 @@ export const NavegationColumn = () => {
 							href=""
 							className="flex justify-center hover:text-red-400 transition-colors duration-300"
 						>
-							<img className="w-[28%]" src="/src/assets/mail_icon.png" alt="" />
+							<img className="w-[28%]" src={mail} alt="" />
 							Mail
 						</a>
 					</li>
