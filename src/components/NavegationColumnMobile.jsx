@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { LinkTo } from './LinkTo'
 import { MyAccount } from './MyAccount'
 import { MainContext } from '../context/context'
+import hamburguerMenu from '../assets/hamburguer_menu.png'
 
 export const NavegationColumnMobile = () => {
 	const {activeNavegation, setActiveNavegation} = useContext(MainContext)
@@ -13,7 +14,7 @@ export const NavegationColumnMobile = () => {
 				onClick={() => {
 					setActiveNavegation(!activeNavegation)
 				}}
-				src="/src/assets/hamburguer_menu.png"
+				src={hamburguerMenu}
 				alt="Icono del menu movil"
 			/>
 

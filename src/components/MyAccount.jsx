@@ -1,7 +1,7 @@
 import { LinkTo } from './LinkTo'
 import { useContext } from 'react'
 import { MainContext } from '../context/context'
-
+import accountIcon from '../assets/account_icon.png'
 
 export const MyAccount = () => {
 const {activeAccount, setActiveAccount} = useContext(MainContext)
@@ -14,7 +14,7 @@ const {activeAccount, setActiveAccount} = useContext(MainContext)
 					setActiveAccount(!activeAccount)
 				}}
 			>
-				<img src="/src/assets/account_icon.png " />
+				<img src={accountIcon}/>
 			</button>
 			<aside
 				className={`${

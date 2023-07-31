@@ -12,6 +12,7 @@ import { MisPosts } from '../pages/MisPosts'
 import { Post } from '../pages/FullPost'
 import { NotFound } from '../pages/NotFound'
 import { MyAccountInformation } from '../pages/MyAccountInformation'
+import { CreatePost } from '../pages/CreatePost'
 
 export const routes = createBrowserRouter([
 	{
@@ -58,6 +59,10 @@ export const routes = createBrowserRouter([
 	{
 		path: '/salir',
 		element: <Salir />,
+	},
+	{
+		path: '/crearpost',
+		element: <CreatePost />
 	},
 	{
 		path: '/notfound',
