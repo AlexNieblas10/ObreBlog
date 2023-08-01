@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { POSTS } from '../utils/POSTS.js'
+import { POSTS } from '../../src/utils/POSTS'
 import { NavegationColumn } from '../components/NavegationColumn'
 import { NavegationColumnMobile } from '../components/NavegationColumnMobile'
 import { MainContainer } from '../components/MainContainer'
@@ -24,12 +24,10 @@ export const Post = () => {
 		<>
 			<NavegationColumn />
 			<NavegationColumnMobile />
-			<MainContainer >
+			<MainContainer>
 				<MyAccount />
 				<Title>{POSTS[idPost]?.title}</Title>
-				<PostsContainer>
-					
-				</PostsContainer>
+				<PostsContainer></PostsContainer>
 			</MainContainer>
 		</>
 	)
