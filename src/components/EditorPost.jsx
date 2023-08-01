@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { toolbarOptions } from '../utils/toolbarOptions'
+import { toolbarOptions } from '../utils/toolbarOptions.d.js'
 
 export const EditorPost = () => {
 	const [value, setValue] = useState('')

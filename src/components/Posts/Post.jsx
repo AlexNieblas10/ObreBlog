@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { newDescription } from '../../utils/newDescription'
+import { newDescription } from '../../utils/newdescription.d.js'
 import { useContext } from 'react'
 import { MainContext } from '../../context/FullContext'
 

@@ -5,8 +5,8 @@ import { MyAccount } from '../../components/MyAccount'
 import { NavegationColumn } from '../../components/NavegationColumn'
 import { Post } from '../../components/Posts/Post'
 import { PostsContainer } from '../../components/Posts/PostsContainer'
-import { POSTS } from '../../utils/POSTS'
-import { CATEGORIES } from '../../utils/CATEGORIES'
+import { POSTS } from '../../utils/POSTS.d.js'
+import { CATEGORIES } from '../../utils/CATEGORIES.d.js'
 import { FullContainer } from '../../components/FullContainer'
 
 export const CiudadContent = () => {

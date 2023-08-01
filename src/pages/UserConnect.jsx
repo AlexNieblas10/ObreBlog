@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { OPCIONES } from '../utils/OPCIONES_USUARIO'
+import { OPCIONES } from '../utils/OPCIONES_USUARIO.d.js'
 import { UserIniciarSesion } from '../components/connect/UserIniciarSesion'
 import { UserRegistrarse } from '../components/connect/UserRegistrarse'
 import { MainContext } from '../context/FullContext'

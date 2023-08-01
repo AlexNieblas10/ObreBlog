@@ -5,9 +5,9 @@ import { NavegationColumn } from '../../components/NavegationColumn'
 import { Post } from '../../components/Posts/Post'
 import { PostsContainer } from '../../components/Posts/PostsContainer'
 import { Title } from '../../components/Title'
-import { CATEGORIES } from '../../utils/CATEGORIES'
+import { CATEGORIES } from '../../utils/CATEGORIES.d.js'
 import { FullContainer } from '../../components/FullContainer'
-import { POSTS } from '../../utils/POSTS'
+import { POSTS } from '../../utils/POSTS.d.js'
 
 export const TecnologiaContent = () => {
 	return (

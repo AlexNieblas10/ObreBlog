@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { OPCIONES } from '../../utils/OPCIONES_USUARIO.JS'
+import { OPCIONES } from '../../utils/OPCIONES_USUARIO.d.js'
 import { MainContext } from '../../context/FullContext'
 
 export const FormularioInicioSesion = ({ setOpcion }) => {

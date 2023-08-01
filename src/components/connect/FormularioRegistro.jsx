@@ -1,4 +1,4 @@
-import { OPCIONES } from '../../utils/OPCIONES_USUARIO.JS'
+import { OPCIONES } from '../../utils/OPCIONES_USUARIO.d.js'
 
 export const FormularioRegistro = ({ setOpcion }) => {
 	return (
