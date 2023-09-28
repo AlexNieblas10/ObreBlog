@@ -24,9 +24,8 @@ export const NavegationColumnMobile = () => {
 				className={`
 					${
 						activeNavegation && '-translate-x-px'
-					} bg-white absolute top-10 w-[80%] h-[calc(100vh-40px)] flex flex-col justify-center items-center box-border gap-8 -translate-x-full transition-all`}
+					} z-10 bg-white shadow-2xl absolute top-10 w-[80%] h-[calc(100vh-40px)] flex flex-col justify-center items-center box-border gap-8 -translate-x-full transition-all`}
 			>
-				<LinkTo link={'/recientes'}>Recientes</LinkTo>
 				<LinkTo link={'/ciudad'}>Ciudad</LinkTo>
 				<LinkTo link={'/tecnologia'}>Tecnologia</LinkTo>
 				<LinkTo link={'/videojuegos'}>Videojuegos</LinkTo>

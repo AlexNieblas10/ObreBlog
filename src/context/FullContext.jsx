@@ -1,36 +1,56 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from "react";
 
-export const MainContext = createContext()
+export const MainContext = createContext();
 
 export function ContextProvider({ children }) {
-	const [loggedUser, setLoggetUser] = useState(true)
-	const [activeAccount, setActiveAccount] = useState(false)
-	const [activeNavegation, setActiveNavegation] = useState(false)
+  const [user, setUser] = useState(localStorage.getItem("user"));
+  const [imageUrl, setImageUrl] = useState(false);
+  const [activeAccount, setActiveAccount] = useState(false);
+  const [activeNavegation, setActiveNavegation] = useState(false);
 
-	useEffect(() => {
-		if (activeAccount) {
-			setActiveNavegation(false)
-		}
-	}, [activeAccount])
+  useEffect(() => {
+    let username = window.localStorage.getItem("user");
 
-	useEffect(() => {
-		if (activeNavegation) {
-			setActiveAccount(false)
-		}
-	}, [activeNavegation])
+    if (username !== null) {
+      fetch(`http://localhost:6655/ProfilePic/?username=${username}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setImageUrl(data);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
 
-	return (
-		<MainContext.Provider
-			value={{
-				loggedUser,
-				setLoggetUser,
-				activeAccount,
-				setActiveAccount,
-				activeNavegation,
-				setActiveNavegation,
-			}}
-		>
-			{children}
-		</MainContext.Provider>
-	)
+  const [loggedUser, setLoggetUser] = useState(
+    localStorage.getItem("wasConnected")
+  );
+
+  useEffect(() => {
+    if (activeAccount) {
+      setActiveNavegation(false);
+    }
+  }, [activeAccount]);
+
+  useEffect(() => {
+    if (activeNavegation) {
+      setActiveAccount(false);
+    }
+  }, [activeNavegation]);
+
+  return (
+    <MainContext.Provider
+      value={{
+        setUser,
+        loggedUser,
+        setLoggetUser,
+        activeAccount,
+        setActiveAccount,
+        activeNavegation,
+        setActiveNavegation,
+        imageUrl,
+      }}
+    >
+      {children}
+    </MainContext.Provider>
+  );
 }
