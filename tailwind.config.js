@@ -6,7 +6,17 @@ export default {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        showCards: {
+          '0%': { transform: 'scale(50%)', opacity:'0' },
+          '100%': { transform: 'scale(100%)', opacity: '1' },
+        }
+      },
+      animation:{
+        'showCards': 'showCards .5s linear'
+      }
+    },
   },
   plugins: [],
 }

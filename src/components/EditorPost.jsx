@@ -1,47 +1,98 @@
-import { useState } from 'react'
-import ReactQuill from 'react-quill'
-import 'react-quill/dist/quill.snow.css'
-import { toolbarOptions } from '../utils/toolbarOptions.d.js'
+import { useState } from "react"
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
+import { toolbarOptions } from "../utils/toolbarOptions.d.js"
+const userAccount = localStorage.getItem("user")
 
 export const EditorPost = () => {
-	const [value, setValue] = useState('')
-	/* 	const [image, setImage] = useState(null) */
+	const [value, setValue] = useState("")
+	const [image, setImage] = useState(null)
+	const [selectedImage, setSelectedImage] = useState(false)
+	const [response, setResponse] = useState(null)
 
 	const module = {
 		toolbar: toolbarOptions,
 	}
 
+	const handleChangePhoto = (e) => {
+		const imageFile = e.target.files[0]
+		const reader = new FileReader()
+
+		reader.onload = function (e) {
+			const base64Data = e.target.result
+			setSelectedImage(base64Data)
+			setImage(true)
+		}
+
+		reader.readAsDataURL(imageFile)
+	}
+
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 
-		const info = {
-			title: e.target[0].value,
-			content: value,
-		}
-		/* info.append('image', image) */
+		if (userAccount) {
+			let category = e.target[0].value
 
-		try {
-			const response = await fetch('http://localhost:6655/enviar', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(info),
-			})
+			if (e.target[1].value.length > 0 && value.length > 0 && image) {
+				const data = {
+					title: e.target[1].value,
+					value: value,
+					image: selectedImage,
+				}
 
-			if (response.ok) {
-				response.text().then((data) => console.log(data))
+				let dataFetch = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				}
+
+				try {
+					const response = await fetch(
+						`http://localhost:6655/UploadPost/?username=${userAccount}&category=${category}`,
+						dataFetch
+					)
+
+					if (response.ok) {
+						response.text().then((data) => setResponse(data))
+						setTimeout(() => {
+							window.location.reload()
+						}, 1000)
+					}
+					if (response.status === 400) {
+						response.json().then((data) => setResponse(data.error))
+					}
+				} catch {
+					setResponse("Intentalo mas tarde, algo falló")
+				}
+			} else {
+				setResponse("Debes llenar todos los campos necesarios")
 			}
-		} catch {
-			console.log('no se pudo')
+		} else {
+			setResponse("Debes estar registrado para poder crear un post")
 		}
 	}
 
 	return (
 		<form
-			className="w-full p-4 gap-5 grid place-items-center"
+			encType="multipart/form-data"
+			className="relative w-full p-4 gap-5 grid place-items-center text-black"
 			onSubmit={(e) => handleSubmit(e)}
 		>
+			<div className="absolute top-0 left-0 flex gap-2 ">
+				<label htmlFor="Categories" className="text-green-600">
+					Categoria:
+				</label>
+				<select name="Categoria" id="Categories">
+					<option>Ciudad</option>
+					<option>Tecnologia</option>
+					<option>Videojuegos</option>
+					<option>Deportes</option>
+					<option>Social</option>
+				</select>
+			</div>
+
 			<input
 				type="text"
 				placeholder="Titulo del post"
@@ -53,15 +104,30 @@ export const EditorPost = () => {
 				theme="snow"
 				value={value}
 				onChange={setValue}
-				placeholder={'Contenido del post'}
+				placeholder={"Contenido del post"}
 			/>
+
 			<input
-				/* onChange={(e) => setImage(e.target.files[0])} */
+				onChange={(e) => handleChangePhoto(e)}
 				type="file"
-				className="text-black w-full bg-slate-200"
+				className="  file:mr-4 file:py-2 file:px-4
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-violet-700
+      hover:file:bg-violet-100"
 			/>
-			<button className="h-14 w-[30%] text-white bg-[#57b846] rounded-2xl text-lg transition-[background-color] duration-300 hover:bg-[#333333]">
-				Subir
+			{selectedImage && (
+				<div className="w-1/8 h-[140px]">
+					<img
+						className="w-full h-full object-cover"
+						src={selectedImage}
+						alt="Selected"
+					/>
+				</div>
+			)}
+			{response && <h2>{response}</h2>}
+			<button className="w-1/2 transition-[background-color]  cursor-pointer text-white bg-[#57b846] rounded-2xl duration-400 hover:bg-[#333333]">
+				Mandar
 			</button>
 		</form>
 	)

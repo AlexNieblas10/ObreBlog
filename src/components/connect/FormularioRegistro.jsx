@@ -5,7 +5,6 @@ export const FormularioRegistro = ({ setOpcion }) => {
 		<article className="w-full h-[80%] flex flex-col justify-center items-center gap-5">
 			<h1 className="text-4xl">Registrate</h1>
 			<form action="" className="lg:w-[60%] flex flex-col gap-3">
-				<input className="h-5 p-4 text-lg border-b-2 border-green-200 outline-none" type="text" placeholder="Nombre completo" />
 				<input
 					className="h-5 p-4 text-lg border-b-2 border-green-200 outline-none"
 					type="text"

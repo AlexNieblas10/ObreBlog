@@ -10,12 +10,11 @@ export const NavegationColumn = () => {
 				<img
 					className="object-contain w-[150px]"
 					src={logo}
-					alt="Logo de ObreBlog"
+					alt="Logo de ObreChat"
 				/>
 			</figure>
 
 			<ul className="box-border w-full h-[65vh] list-none p-0 m-0 text-center flex flex-col justify-center items-center gap-10 border-b-2">
-				<LinkTo link={'/recientes'}>Recientes</LinkTo>
 				<LinkTo link={'/ciudad'}>Ciudad</LinkTo>
 				<LinkTo link={'/tecnologia'}>Tecnologia</LinkTo>
 				<LinkTo link={'/videojuegos'}>Videojuegos</LinkTo>
