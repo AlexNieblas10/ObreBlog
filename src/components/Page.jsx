@@ -7,12 +7,20 @@ import { NavegationColumn } from "./NavegationColumn"
 import { NavegationColumnMobile } from "./NavegationColumnMobile"
 import { Title } from "./Title"
 import { useEffect, useState } from "react"
+import { PostsContainer } from "./Posts/PostsContainer"
+import { LinkTo } from "./LinkTo"
+import { Post } from "./Posts/Post"
+import { Loading } from "./Loading"
 
 export const Page = () => {
 	const [loading, setLoading] = useState(true)
+	const [posts, setPosts] = useState(null)
 
 	const category = window.location.pathname.split("/")[2]
-	const isValid = CATEGORIES.findIndex((name) => name === category)
+	const isValid = CATEGORIES.findIndex(
+		(name) => name.toLocaleLowerCase() === category.toLocaleLowerCase()
+	)
+
 	const navigate = useNavigate()
 	useEffect(() => {
 		if (isValid < 0) {
@@ -20,17 +28,59 @@ export const Page = () => {
 		}
 	})
 
+	useEffect(() => {
+		setPosts(null)
+		setLoading(true)
+		fetch(
+			`https://obreblogback-dev-fgrr.3.us-1.fl0.io/Posts/${CATEGORIES[isValid]}`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				setPosts(data)
+				setLoading(false)
+			})
+	}, [isValid])
+
 	return (
 		<>
-			<FullContainer>
-				<NavegationColumn />
-				<NavegationColumnMobile />
-				<MainContainer>
-					<MyAccount />
-					<Title>{CATEGORIES[isValid]}</Title>
-					{loading && <h1 className="text-5xl text-black">Cargando...</h1>}
-				</MainContainer>
-			</FullContainer>
+			{isValid >= 0 && (
+				<FullContainer>
+					<NavegationColumn />
+					<NavegationColumnMobile />
+					<MainContainer>
+						<MyAccount />
+						<Title>{CATEGORIES[isValid]}</Title>
+
+						{loading && <Loading />}
+						{posts?.Data && (
+							<PostsContainer>
+								<h1 className="text-black text-3xl wrapText text-center">
+									{posts.Data} pero puedes crear uno en
+									<LinkTo link={"/crearpost"}> Crear post</LinkTo>
+								</h1>
+							</PostsContainer>
+						)}
+
+						{posts?.realPosts && (
+							<PostsContainer>
+								{posts.realPosts.map((post) => {
+									return (
+										<Post
+											id={post.ID}
+											key={post.ID}
+											title={post.Title}
+											imgURL={post.Image}
+											description={post.Content}
+											autor={post.username}
+											category={category}
+										/>
+									)
+								})}
+							</PostsContainer>
+						)}
+					</MainContainer>
+				</FullContainer>
+			)}
 		</>
 	)
 }

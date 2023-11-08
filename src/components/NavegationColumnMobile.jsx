@@ -26,11 +26,11 @@ export const NavegationColumnMobile = () => {
 						activeNavegation && '-translate-x-px'
 					} z-10 bg-white shadow-2xl absolute top-10 w-[80%] h-[calc(100vh-40px)] flex flex-col justify-center items-center box-border gap-8 -translate-x-full transition-all`}
 			>
-				<LinkTo link={'/ciudad'}>Ciudad</LinkTo>
-				<LinkTo link={'/tecnologia'}>Tecnologia</LinkTo>
-				<LinkTo link={'/videojuegos'}>Videojuegos</LinkTo>
-				<LinkTo link={'/deportes'}>Deportes</LinkTo>
-				<LinkTo link={'/social'}>Social</LinkTo>
+				<LinkTo link={'/posts/ciudad'}>Ciudad</LinkTo>
+				<LinkTo link={'/posts/tecnologia'}>Tecnologia</LinkTo>
+				<LinkTo link={'/posts/videojuegos'}>Videojuegos</LinkTo>
+				<LinkTo link={'/posts/deportes'}>Deportes</LinkTo>
+				<LinkTo link={'/posts/social'}>Social</LinkTo>
 			</ul>
 		</aside>
 	)

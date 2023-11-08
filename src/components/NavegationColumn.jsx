@@ -1,7 +1,7 @@
-import { LinkTo } from './LinkTo'
-import githubIcon from '../assets/github_icon.png'
-import logo from '../assets/ObreBlog-logo.png'
-import mail from '../assets/mail_icon.png'
+import { LinkTo } from "./LinkTo"
+import githubIcon from "../assets/github_icon.png"
+import logo from "../assets/ObreBlog-logo.png"
+import mail from "../assets/mail_icon.png"
 
 export const NavegationColumn = () => {
 	return (
@@ -15,11 +15,11 @@ export const NavegationColumn = () => {
 			</figure>
 
 			<ul className="box-border w-full h-[65vh] list-none p-0 m-0 text-center flex flex-col justify-center items-center gap-10 border-b-2">
-				<LinkTo link={'/ciudad'}>Ciudad</LinkTo>
-				<LinkTo link={'/tecnologia'}>Tecnologia</LinkTo>
-				<LinkTo link={'/videojuegos'}>Videojuegos</LinkTo>
-				<LinkTo link={'/deportes'}>Deportes</LinkTo>
-				<LinkTo link={'/social'}>Social</LinkTo>
+				<LinkTo link={"/posts/ciudad"}>Ciudad</LinkTo>
+				<LinkTo link={"/posts/tecnologia"}>Tecnologia</LinkTo>
+				<LinkTo link={"/posts/videojuegos"}>Videojuegos</LinkTo>
+				<LinkTo link={"/posts/deportes"}>Deportes</LinkTo>
+				<LinkTo link={"/posts/social"}>Social</LinkTo>
 			</ul>
 
 			<footer className="h-[15vh] grid place-items-center p-2">
@@ -31,11 +31,7 @@ export const NavegationColumn = () => {
 							href=""
 							className="flex justify-center hover:text-red-400 transition-colors duration-300"
 						>
-							<img
-								className="w-[28%] object-cover"
-								src={githubIcon}
-								alt=""
-							/>
+							<img className="w-[28%] object-cover" src={githubIcon} alt="" />
 							GitHub
 						</a>
 					</li>

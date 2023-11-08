@@ -1,7 +1,7 @@
 export const CATEGORIES = [
-	"ciudad",
-	"tecnologia",
-	"videojuegos",
-	"deportes",
-	"social",
+	"Ciudad",
+	"Tecnologia",
+	"Videojuegos",
+	"Deportes",
+	"Social",
 ]

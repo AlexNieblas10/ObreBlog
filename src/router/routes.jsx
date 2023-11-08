@@ -1,11 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
-import { Ciudad } from "../pages/Ciudad"
+
 import { Principal } from "../pages/Principal"
 import { UserConnect } from "../pages/UserConnect"
-import { Tecnologia } from "../pages/Tecnologia"
-import { Videojuegos } from "../pages/Videojuegos"
-import { Deportes } from "../pages/Deportes"
-import { Social } from "../pages/Social"
+
 import { Salir } from "../pages/Salir"
 import { MisPosts } from "../pages/MisPosts"
 import { Post } from "../pages/FullPost"
@@ -23,26 +20,6 @@ export const routes = createBrowserRouter([
 		path: "/",
 		element: <Principal />,
 		errorElement: <NotFound />,
-	},
-	{
-		path: "/ciudad",
-		element: <Ciudad />,
-	},
-	{
-		path: "/tecnologia",
-		element: <Tecnologia />,
-	},
-	{
-		path: "/videojuegos",
-		element: <Videojuegos />,
-	},
-	{
-		path: "/deportes",
-		element: <Deportes />,
-	},
-	{
-		path: "/social",
-		element: <Social />,
 	},
 	{
 		path: "/micuenta",
@@ -70,6 +47,6 @@ export const routes = createBrowserRouter([
 	},
 	{
 		path: "/posts/:category",
-		element: <Page/>
+		element: <Page />,
 	},
 ])

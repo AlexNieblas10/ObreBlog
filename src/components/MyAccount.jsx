@@ -1,10 +1,11 @@
-import { LinkTo } from './LinkTo'
-import { useContext } from 'react'
-import { MainContext } from '../context/FullContext'
-import accountIcon from '../assets/account_icon.png'
+import { LinkTo } from "./LinkTo"
+import { useContext } from "react"
+import { MainContext } from "../context/FullContext"
+import accountIcon from "../assets/account_icon.png"
 
 export const MyAccount = () => {
-	const { activeAccount, setActiveAccount, imageUrl } = useContext(MainContext)
+	const { activeAccount, setActiveAccount } = useContext(MainContext)
+	let imageUrl = localStorage.getItem('imageUser')
 
 	const logOut = () => {
 		localStorage.clear()
@@ -27,12 +28,12 @@ export const MyAccount = () => {
 				</button>
 				<aside
 					className={`${
-						activeAccount && 'translate-x-px'
+						activeAccount && "translate-x-px"
 					} bg-white list-none flex flex-col items-center transition-all p-4 gap-2 text-black translate-x-36 `}
 				>
-					<LinkTo link={'/crearpost'}>Crear post</LinkTo>
+					<LinkTo link={"/crearpost"}>Crear post</LinkTo>
 
-					<LinkTo link={'/micuenta'}>Mi cuenta</LinkTo>
+					<LinkTo link={"/micuenta"}>Mi cuenta</LinkTo>
 					<LinkTo>Mis post</LinkTo>
 					<button
 						onClick={logOut}

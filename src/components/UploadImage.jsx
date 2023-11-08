@@ -32,7 +32,7 @@ export const UploadImage = () => {
 					Mandar
 				</button>
 			</form>
-			{statusImage ? <h2 className="text-center">{statusImage}</h2> : ''}
+			{statusImage ? <h2 className="text-center text-green-600">{statusImage}</h2> : ''}
 		</article>
 	)
 }

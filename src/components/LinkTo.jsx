@@ -11,7 +11,7 @@ export const LinkTo = ({ children, link }) => {
 				setActiveNavegation(false)
 				setActiveAccount(false)
 			}}
-			className="w-max text-2xl transition-[color,_transform] duration-300 hover:text-red-400  hover:scale-[1.2]"
+			className="w-max text-2xl transition-[color,_transform] duration-300 hover:text-green-500   hover:scale-[1.2]"
 			to={link}
 		>
 			{children}

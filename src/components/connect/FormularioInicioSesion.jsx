@@ -3,22 +3,22 @@ import { OPCIONES } from '../../utils/OPCIONES_USUARIO.d.js'
 import { MainContext } from '../../context/FullContext'
 
 export const FormularioInicioSesion = ({ setOpcion }) => {
-	const { setLoggetUser, setUser } = useContext(MainContext)
+	const { setLoggetUser } = useContext(MainContext)
 	const [response, setResponse] = useState('')
 
 	const validateUser = (e) => {
 		e.preventDefault()
 
 		fetch(
-			`http://localhost:6655/Username?identification=${e.target[0].value}&password=${e.target[1].value}`
+			`https://obreblogback-dev-fgrr.3.us-1.fl0.io/Username?identification=${e.target[0].value}&password=${e.target[1].value}`
 		)
 			.then((response) => {
 				response.status === 400
 					? setResponse('El usuario o contraseña que ingresaste no existe')
 					: response.json().then((data) => {
+							localStorage.setItem('imageUser', data.Image)
 							localStorage.setItem('wasConnected', true)
 							localStorage.setItem('user', data.Username)
-							setUser(window.localStorage.getItem('user'))
 							setLoggetUser(true)
 						})
 			})

@@ -50,7 +50,7 @@ export const EditorPost = () => {
 
 				try {
 					const response = await fetch(
-						`http://localhost:6655/UploadPost/?username=${userAccount}&category=${category}`,
+						`https://obreblogback-dev-fgrr.3.us-1.fl0.io/UploadPost/?username=${userAccount}&category=${category}`,
 						dataFetch
 					)
 

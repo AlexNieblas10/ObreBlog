@@ -16,10 +16,10 @@ export const MyAccountInformationContent = () => {
 	const [isRepeatNewPassword, setIsRepeatNewPassword] = useState(false)
 	const [userData, setUserData] = useState(null)
 	const userAccount = localStorage.getItem("user")
-
+	/* User?username=${userAccount}  */
 	useEffect(() => {
 		const QUERY = fetch(
-			`https://obrechatback-2xgd-dev.fl0.io/User?username=${userAccount}`
+			`https://obreblogback-dev-fgrr.3.us-1.fl0.io/User?username=${userAccount}`
 		)
 
 		QUERY.then((response) => {
@@ -42,7 +42,7 @@ export const MyAccountInformationContent = () => {
 
 	useEffect(() => {
 		if (currentPassword.length === passwordLength) {
-			const QUERY = fetch(`http://localhost:6655/User?username=${userAccount}`)
+			const QUERY = fetch(`https://obreblogback-dev-fgrr.3.us-1.fl0.io/User?username=${userAccount}`)
 			QUERY.then((response) => {
 				if (response.status === 400) {
 					return response.json().then((data) => console.log(data))
