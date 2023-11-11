@@ -5,7 +5,7 @@ import accountIcon from "../assets/account_icon.png"
 
 export const MyAccount = () => {
 	const { activeAccount, setActiveAccount } = useContext(MainContext)
-	let imageUrl = localStorage.getItem('imageUser')
+	let imageUrl = localStorage.getItem("imageUser")
 
 	const logOut = () => {
 		localStorage.clear()
@@ -23,7 +23,7 @@ export const MyAccount = () => {
 				>
 					<img
 						className="w-full h-full object-cover p-1 rounded-full"
-						src={imageUrl ? imageUrl : accountIcon}
+						src={imageUrl === null ? accountIcon : imageUrl}
 					/>
 				</button>
 				<aside
