@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react"
+import { configLocal } from "../utils/urtToServerLocal"
+import { config } from "../utils/urtToServer"
 
 export const MainContext = createContext()
 
@@ -10,6 +12,7 @@ export function ContextProvider({ children }) {
 		localStorage.getItem("wasConnected")
 	)
 
+	const serverUrl =import.meta.env.MODE === "development" ? configLocal : config
 	useEffect(() => {
 		if (activeAccount) {
 			setActiveNavegation(false)
@@ -31,6 +34,7 @@ export function ContextProvider({ children }) {
 				setActiveAccount,
 				activeNavegation,
 				setActiveNavegation,
+				serverUrl,
 			}}
 		>
 			{children}

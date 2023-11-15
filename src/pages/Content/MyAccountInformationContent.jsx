@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Loading } from "../../components/Loading"
 import UploadImage from "../../components/UploadImage"
+import { MainContext } from "../../context/FullContext"
 
 export const MyAccountInformationContent = () => {
 	const [loading, setLoading] = useState(true)
@@ -16,10 +17,11 @@ export const MyAccountInformationContent = () => {
 	const [isRepeatNewPassword, setIsRepeatNewPassword] = useState(false)
 	const [userData, setUserData] = useState(null)
 	const userAccount = localStorage.getItem("user")
+
+	const { serverUrl } = useContext(MainContext)
+
 	useEffect(() => {
-		const QUERY = fetch(
-			`https://obreblogback-dev-fgrr.3.us-1.fl0.io/User?username=${userAccount}`
-		)
+		const QUERY = fetch(`${serverUrl}User?username=${userAccount}`)
 
 		QUERY.then((response) => {
 			if (response.status === 400) {
@@ -41,9 +43,7 @@ export const MyAccountInformationContent = () => {
 
 	useEffect(() => {
 		if (currentPassword.length === passwordLength) {
-			const QUERY = fetch(
-				`https://obreblogback-dev-fgrr.3.us-1.fl0.io/User?username=${userAccount}`
-			)
+			const QUERY = fetch(`${serverUrl}User?username=${userAccount}`)
 			QUERY.then((response) => {
 				if (response.status === 400) {
 					return response.json().then((data) => console.log(data))

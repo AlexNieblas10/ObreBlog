@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import {MainContext} from "../context/FullContext"
 
 export const useUploadImage = () => {
 	let username = window.localStorage.getItem("user")
 	const [selectedImage, setSelectedImage] = useState(false)
 	const [statusImage, setStatusImage] = useState(false)
+
+	const {serverUrl} = useContext(MainContext)
 
 	const handleSendPhoto = (e) => {
 		e.preventDefault()
@@ -23,7 +26,7 @@ export const useUploadImage = () => {
 			setStatusImage("Se esta procesando la imagen")
 
 			fetch(
-				`https://obreblogback-dev-fgrr.3.us-1.fl0.io/Upload/?username=${username}`,
+				`${serverUrl}Upload/?username=${username}`,
 				dataFetch
 			)
 				.then((response) => {

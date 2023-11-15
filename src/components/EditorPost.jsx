@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 import { toolbarOptions } from "../utils/toolbarOptions.d.js"
+import { MainContext } from "../context/FullContext.jsx"
 const userAccount = localStorage.getItem("user")
 
 export const EditorPost = () => {
@@ -9,6 +10,8 @@ export const EditorPost = () => {
 	const [image, setImage] = useState(null)
 	const [selectedImage, setSelectedImage] = useState(false)
 	const [response, setResponse] = useState(null)
+
+	const {serverUrl} = useContext(MainContext)
 
 	const module = {
 		toolbar: toolbarOptions,
@@ -50,7 +53,7 @@ export const EditorPost = () => {
 
 				try {
 					const response = await fetch(
-						`https://obreblogback-dev-fgrr.3.us-1.fl0.io/UploadPost/?username=${userAccount}&category=${category}`,
+						`${serverUrl}UploadPost/?username=${userAccount}&category=${category}`,
 						dataFetch
 					)
 

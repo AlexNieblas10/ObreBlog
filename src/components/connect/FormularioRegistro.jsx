@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { OPCIONES } from "../../utils/OPCIONES_USUARIO.d.js"
 import { caracteres } from "../../utils/caracteres.js"
+import {MainContext} from "../../context/FullContext.jsx"
+
 export const FormularioRegistro = ({ setOpcion }) => {
 	const [contraseña, setContraseña] = useState(false)
 	const [confirmarContraseña, setConfirmarContrasela] = useState(false)
@@ -28,6 +30,8 @@ export const FormularioRegistro = ({ setOpcion }) => {
 		}
 	}, [contraseña, confirmarContraseña])
 
+	const {serverUrl} = useContext(MainContext)
+
 	function registrarse(e) {
 		e.preventDefault()
 
@@ -52,7 +56,7 @@ export const FormularioRegistro = ({ setOpcion }) => {
 				body: JSON.stringify(data),
 			}
 
-			fetch("https://obreblogback-dev-fgrr.3.us-1.fl0.io/Register", dataFetch)
+			fetch(`${serverUrl}Register`, dataFetch)
 				.then((data) => data.text())
 				.then((info) => setMensaje(info))
 		}

@@ -10,6 +10,7 @@ import { NotFound } from "../pages/NotFound"
 import { MyAccountInformation } from "../pages/MyAccountInformation"
 import { CreatePost } from "../pages/CreatePost"
 import { Page } from "../components/Page"
+import { Comments } from "../components/Comments"
 
 export const routes = createBrowserRouter([
 	{
@@ -49,4 +50,8 @@ export const routes = createBrowserRouter([
 		path: "/posts/:category",
 		element: <Page />,
 	},
+	{
+		path:"/comments",
+		element: <Comments />
+	}
 ])

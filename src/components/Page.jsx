@@ -6,11 +6,12 @@ import { MyAccount } from "./MyAccount"
 import { NavegationColumn } from "./NavegationColumn"
 import { NavegationColumnMobile } from "./NavegationColumnMobile"
 import { Title } from "./Title"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PostsContainer } from "./Posts/PostsContainer"
 import { LinkTo } from "./LinkTo"
 import { Post } from "./Posts/Post"
 import { Loading } from "./Loading"
+import { MainContext } from "../context/FullContext"
 
 export const Page = () => {
 	const [loading, setLoading] = useState(true)
@@ -20,6 +21,8 @@ export const Page = () => {
 	const isValid = CATEGORIES.findIndex(
 		(name) => name.toLocaleLowerCase() === category.toLocaleLowerCase()
 	)
+
+	const {serverUrl} = useContext(MainContext)
 
 	const navigate = useNavigate()
 	useEffect(() => {
@@ -32,7 +35,7 @@ export const Page = () => {
 		setPosts(null)
 		setLoading(true)
 		fetch(
-			`https://obreblogback-dev-fgrr.3.us-1.fl0.io/Posts/${CATEGORIES[isValid]}`
+			`${serverUrl}Posts/${CATEGORIES[isValid]}`
 		)
 			.then((response) => response.json())
 			.then((data) => {
@@ -51,7 +54,11 @@ export const Page = () => {
 						<MyAccount />
 						<Title>{CATEGORIES[isValid]}</Title>
 
-						{loading && <Loading />}
+						{loading && (
+							<div className="w-full heightLoading grid place-items-center">
+								<Loading />
+							</div>
+						)}
 						{posts?.Data && (
 							<PostsContainer>
 								<h1 className="text-black text-3xl wrapText text-center">

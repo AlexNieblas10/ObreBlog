@@ -5,3 +5,7 @@
 .wrapText {
 	white-space: balance;
 }
+
+.heightLoading{
+	height: calc(100vh - 20vh);
+}
