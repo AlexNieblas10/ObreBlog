@@ -28,16 +28,16 @@ export const NavegationColumn = () => {
 				<ul className="flex gap-2">
 					<li className="w-[50%]  ">
 						<a
-							href=""
+							href="https://github.com/AlexNieblas10/ObreBlog"
 							className="flex justify-center hover:text-red-400 transition-colors duration-300"
 						>
 							<img className="w-[28%] object-cover" src={githubIcon} alt="" />
 							GitHub
 						</a>
 					</li>
-					<li className="w-[50%]  ">
+					<li className="w-[50%]">
 						<a
-							href=""
+							href="mailto:obrepost@gmail.com"
 							className="flex justify-center hover:text-red-400 transition-colors duration-300"
 						>
 							<img className="w-[28%]" src={mail} alt="" />

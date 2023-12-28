@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-import { newDescription } from "../../utils/newdescription.d.js"
 import { useContext } from "react"
 import { MainContext } from "../../context/FullContext"
 
@@ -10,9 +9,14 @@ export const Post = ({
 	category,
 	title,
 }) => {
-	const shortDescription = newDescription(description)
 	const { setActiveAccount } = useContext(MainContext)
 	let titleUrl = title.replaceAll(" ", "-")
+
+	let oldCategory = (category.split(''))
+	oldCategory.shift()
+	oldCategory = oldCategory.join("")
+
+	category = (category[0].toUpperCase() + oldCategory)
 
 	return (
 		<article
@@ -30,18 +34,14 @@ export const Post = ({
 				<h2 className="text-center text-2xl wrapText leading-6 font-semibold">
 					{title}
 				</h2>
-				<p className="w-full font-light leading-4 break-words overflow-hidden">
-					{shortDescription}
-				</p>
+				<div className="w-full font-light h-16 leading-4 break-words overflow-hidden" dangerouslySetInnerHTML={{ __html: description }}>
+				</div>
 				<ul className="w-full flex justify-between">
 					<li className="font-medium">{autor}</li>
 
-					<Link
-						to={`/posts/${category.toLowerCase()}`}
-						className="transition-[color,_transform] duration-300 hover:text-red-400  hover:scale-[1.2]"
-					>
-						<li className="font-medium">{category}</li>
-					</Link>
+
+					<li className="font-medium ">{ category}</li>
+
 				</ul>
 			</div>
 		</article>

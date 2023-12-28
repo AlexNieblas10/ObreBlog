@@ -83,7 +83,7 @@ export const EditorPost = () => {
 			className="relative w-full p-4 gap-5 grid place-items-center text-black"
 			onSubmit={(e) => handleSubmit(e)}
 		>
-			<div className="absolute top-0 left-0 flex gap-2 ">
+			<div className="absolute top-0 left-0 flex gap-2">
 				<label htmlFor="Categories" className="text-green-600">
 					Categoria:
 				</label>

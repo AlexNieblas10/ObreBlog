@@ -13,8 +13,8 @@ export const MyAccount = () => {
 	}
 
 	return (
-		<>
-			<section className="flex flex-col items-end absolute top-0 right-0 box-border overflow-hidden">
+		<div className="sticky z-10 top-0 right-0">
+			<section className="flex flex-col items-end top-0 right-0 box-border absolute overflow-hidden">
 				<button
 					className="list-none w-14 h-14 pointer-events-auto"
 					onClick={() => {
@@ -26,10 +26,11 @@ export const MyAccount = () => {
 						src={imageUrl === null ? accountIcon : imageUrl}
 					/>
 				</button>
+
+
 				<aside
-					className={`${
-						activeAccount && "translate-x-px"
-					} bg-white list-none flex flex-col items-center transition-all p-4 gap-2 text-black translate-x-36 `}
+					className={`${activeAccount && "translate-x-px"
+						} bg-white list-none rounded-l-md mt-1 flex flex-col items-center transition-all p-4 gap-2 text-black translate-x-36 `}
 				>
 					<LinkTo link={"/crearpost"}>Crear post</LinkTo>
 
@@ -43,6 +44,7 @@ export const MyAccount = () => {
 					</button>
 				</aside>
 			</section>
-		</>
+		</div>
+
 	)
 }

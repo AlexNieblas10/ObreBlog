@@ -17,7 +17,7 @@ export const Post = () => {
 
 	let titlePost = window.location.pathname.split("/")[2] ?? null
 
-	const {serverUrl} = useContext(MainContext)
+	const { serverUrl } = useContext(MainContext)
 
 	useEffect(() => {
 		if (dataPost === null) {
@@ -35,6 +35,7 @@ export const Post = () => {
 
 	return (
 		<>
+
 			<NavegationColumn />
 			<NavegationColumnMobile />
 			<MainContainer>

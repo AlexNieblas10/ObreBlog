@@ -7,6 +7,8 @@ export const MainContext = createContext()
 export function ContextProvider({ children }) {
 	const [activeAccount, setActiveAccount] = useState(false)
 	const [activeNavegation, setActiveNavegation] = useState(false)
+	const [width, setWidth] = useState(window.innerWidth)
+
 
 	const [loggedUser, setLoggetUser] = useState(
 		localStorage.getItem("wasConnected")
@@ -35,6 +37,8 @@ export function ContextProvider({ children }) {
 				activeNavegation,
 				setActiveNavegation,
 				serverUrl,
+				width,
+				setWidth
 			}}
 		>
 			{children}

@@ -22,7 +22,7 @@ export const Page = () => {
 		(name) => name.toLocaleLowerCase() === category.toLocaleLowerCase()
 	)
 
-	const {serverUrl} = useContext(MainContext)
+	const { serverUrl } = useContext(MainContext)
 
 	const navigate = useNavigate()
 	useEffect(() => {
@@ -51,6 +51,7 @@ export const Page = () => {
 					<NavegationColumn />
 					<NavegationColumnMobile />
 					<MainContainer>
+						
 						<MyAccount />
 						<Title>{CATEGORIES[isValid]}</Title>
 
