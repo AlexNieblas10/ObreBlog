@@ -2,37 +2,42 @@ import { useContext, useState } from "react"
 import { MainContext } from "../context/FullContext"
 import { Loading } from "./Loading"
 
-export const AddComment = ({idPost }) => {
+export const AddComment = ({ idPost }) => {
 	let idUser = localStorage.getItem("idUser")
 	const { serverUrl } = useContext(MainContext)
-  const [comentario, setComentario] = useState("")
+	const [comentario, setComentario] = useState("")
 	const [info, setInfo] = useState(false)
 	const [loader, setLoader] = useState(false)
 
-  function mandarComentario(e) {
-    e.preventDefault()
-    setLoader(true)
-    let data = { comentario, idPost, idUser }
-  
-    let dataFetch = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-  
-    fetch(`${serverUrl}Comentar`, dataFetch)
-      .then((response) => response.text())
-      .then((data) => {
-        setLoader(false)
-        setInfo(data)
-      })
-  }
-  
-  function capturarComentario(e) {
-    setComentario(e.target.value)
-  }
+	function mandarComentario(e) {
+		e.preventDefault()
+		setLoader(true)
+		let data = { comentario, idPost, idUser }
+		if (comentario.length > 0) {
+			let dataFetch = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(data),
+			}
+
+			fetch(`${serverUrl}Comentar`, dataFetch)
+				.then((response) => response.text())
+				.then((data) => {
+					setLoader(false)
+					setInfo(data)
+				})
+		} else {
+			setLoader(false)
+			setInfo("El comentario debe tener mas de 1 letra")
+		}
+
+	}
+
+	function capturarComentario(e) {
+		setComentario(e.target.value)
+	}
 
 	return (
 		<>
@@ -57,7 +62,7 @@ export const AddComment = ({idPost }) => {
 				)}
 			</form>
 
-			{info && <h2 className="text-center text-2xl">{info}</h2>}
+			{info && <h2 className="text-center text-2xl font-normal">{info}</h2>}
 		</>
 	)
 }

@@ -14,16 +14,12 @@ export const Comments = ({ idPost }) => {
 	}, [])
 	return (
 		<>
-			<footer className="flex text-black flex-col mb-8">
+			<footer className="flex text-black flex-col mb-8 p-4">
 				{comments && (
-					<ul className="flex flex-col gap-5 items-center">
+					<ul className="flex flex-col gap-10 items-center">
 						{comments.map((comment) => {
 							return (
-								<>
-									<Comment comment={comment} />
-								</>
-
-
+								<Comment key={comment.Comment} comment={comment} />
 							)
 						})}
 					</ul>

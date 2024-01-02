@@ -49,18 +49,18 @@ export const Post = () => {
 				{dataPost && (
 					<>
 						<Title>{dataPost?.Title}</Title>
-						<section className="md:flex flex-col">
-							<aside className="flex-col flex md:flex-row justify-center items-center gap-10 p-10">
-								<div className="w-[95vw] md:w-[30vw] h-[40vh]">
+						<section className="flex flex-col">
+							<aside className="w-full flex flex-col gap-10 p-10 items-center">
+								<div className="max-w-[40%] max-h-[40%] overflow-hidden">
 									<img
 										className="w-full h-full object-cover"
 										src={dataPost?.Image}
-										alt=""
+										alt="Imagen del post"
 									/>
 								</div>
 								<div
 									dangerouslySetInnerHTML={{ __html: dataPost?.Content }}
-									className="text-black bg-slate-100 md:w-[30vw] w-[95vw] h-[60vh] overflow-scroll grid text-2xl place-items-center"
+									className="text-black overflow-scroll grid text-3xl place-items-center"
 								></div>
 							</aside>
 
